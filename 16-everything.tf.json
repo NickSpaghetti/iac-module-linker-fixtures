@@ -1,0 +1,32 @@
+{
+  "terraform": [
+    {
+      "required_providers": [
+        {
+          "aws": {
+            "source": "hashicorp/aws",
+            "version": ">= 5.0"
+          }
+        }
+      ]
+    }
+  ],
+  "module": {
+    "json_registry": [
+      {
+        "source": "terraform-aws-modules/vpc/aws",
+        "version": "6.7.3"
+      }
+    ],
+    "json_git": [
+      {
+        "source": "git::https://github.com/NickSpaghetti/iac-module-linker-fixtures.git//modules/vpc?ref=v1.0.0"
+      }
+    ],
+    "json_local": [
+      {
+        "source": "./modules/vpc"
+      }
+    ]
+  }
+}

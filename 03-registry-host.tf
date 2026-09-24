@@ -14,3 +14,11 @@ module "opentofu_registry" {
 module "third_party_registry" {
   source = "registry.example.com/example-corp/networking/aws"
 }
+
+# The public registry written in its host qualified form. It must resolve to
+# the same place as the bare form "terraform-aws-modules/vpc/aws", not be
+# mistaken for a private registry.
+module "public_registry_host_qualified" {
+  source  = "registry.terraform.io/terraform-aws-modules/vpc/aws"
+  version = "6.7.3"
+}

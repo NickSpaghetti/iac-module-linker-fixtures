@@ -15,3 +15,10 @@ module "git_https_file_target" {
 module "git_ssh_scheme" {
   source = "git::ssh://git@github.com/NickSpaghetti/iac-module-linker-fixtures.git//modules/vpc?ref=v1.0.0"
 }
+
+# A forced VCS type wins over the file extension. This is a repository whose
+# url happens to end in .zip, not an archive. The label and the link have to
+# agree about which it is.
+module "git_forced_beats_archive_extension" {
+  source = "git::https://example.com/repo.zip"
+}

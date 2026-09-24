@@ -11,6 +11,14 @@ module "opentofu_registry" {
   version = "6.7.3"
 }
 
+# A range. OpenTofu's api takes a version rather than a constraint, so this
+# has to be resolved against the published list before the link is built.
+# Getting it wrong is silent: the link falls back to latest and still works.
+module "opentofu_registry_range" {
+  source  = "registry.opentofu.org/terraform-aws-modules/vpc/aws"
+  version = "~> 5.0"
+}
+
 module "third_party_registry" {
   source = "registry.example.com/example-corp/networking/aws"
 }

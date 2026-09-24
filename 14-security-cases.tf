@@ -19,3 +19,20 @@ module "userinfo_smuggling" {
 module "backslash_no_confusion" {
   source = "a.terraform.io\\@evil.com/x"
 }
+
+# Userinfo spoofing. These read as one host and resolve to another. The
+# rendered link text is the module name, so it can look benign.
+
+module "userinfo_spoof_schemeless" {
+  source = "a.terraform.io@evil.com/x"
+}
+
+module "userinfo_spoof_https" {
+  source = "https://a.terraform.io@evil.com/x"
+}
+
+# The forced type form is worse: rebuilding the url drops the userinfo, so the
+# result carries no @ at all and reads like an ordinary path.
+module "userinfo_spoof_forced_git" {
+  source = "git::https://github.com@evil.com/a/b.git"
+}

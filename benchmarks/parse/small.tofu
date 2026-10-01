@@ -1,53 +1,5 @@
 # Parse benchmark, short. Three modules, the rest is bulk.
 
-# OpenTofu twin of the .tf file: each version is a variable default and each
-# registry namespace a local, so every source and version is evaluated.
-
-variable "vpc_version" {
-  default = "~> 5.0"
-}
-
-variable "security_group_version" {
-  default = "~> 5.1"
-}
-
-variable "s3_bucket_version" {
-  default = "~> 4.0"
-}
-
-locals {
-  terraform_aws_modules = local.chain_25
-}
-
-# 25 locals, each written before the one it refers to, the slowest order to resolve.
-locals {
-  chain_25 = local.chain_24
-  chain_24 = local.chain_23
-  chain_23 = local.chain_22
-  chain_22 = local.chain_21
-  chain_21 = local.chain_20
-  chain_20 = local.chain_19
-  chain_19 = local.chain_18
-  chain_18 = local.chain_17
-  chain_17 = local.chain_16
-  chain_16 = local.chain_15
-  chain_15 = local.chain_14
-  chain_14 = local.chain_13
-  chain_13 = local.chain_12
-  chain_12 = local.chain_11
-  chain_11 = local.chain_10
-  chain_10 = local.chain_9
-  chain_9 = local.chain_8
-  chain_8 = local.chain_7
-  chain_7 = local.chain_6
-  chain_6 = local.chain_5
-  chain_5 = local.chain_4
-  chain_4 = local.chain_3
-  chain_3 = local.chain_2
-  chain_2 = local.chain_1
-  chain_1 = "terraform-aws-modules"
-}
-
 terraform {
   required_version = ">= 1.5.0"
 }
@@ -549,4 +501,53 @@ resource "aws_ssm_parameter" "service_29" {
   value       = "https://service-29.internal"
 
   tags = local.tags
+}
+
+# OpenTofu twin of the .tf file: each version is a variable default and each
+# registry namespace a local, so every source and version is evaluated. They
+# come last so every module sits on the same line as in the .tf file.
+
+variable "vpc_version" {
+  default = "~> 5.0"
+}
+
+variable "security_group_version" {
+  default = "~> 5.1"
+}
+
+variable "s3_bucket_version" {
+  default = "~> 4.0"
+}
+
+locals {
+  terraform_aws_modules = local.chain_25
+}
+
+# 25 locals, each written before the one it refers to, the slowest order to resolve.
+locals {
+  chain_25 = local.chain_24
+  chain_24 = local.chain_23
+  chain_23 = local.chain_22
+  chain_22 = local.chain_21
+  chain_21 = local.chain_20
+  chain_20 = local.chain_19
+  chain_19 = local.chain_18
+  chain_18 = local.chain_17
+  chain_17 = local.chain_16
+  chain_16 = local.chain_15
+  chain_15 = local.chain_14
+  chain_14 = local.chain_13
+  chain_13 = local.chain_12
+  chain_12 = local.chain_11
+  chain_11 = local.chain_10
+  chain_10 = local.chain_9
+  chain_9 = local.chain_8
+  chain_8 = local.chain_7
+  chain_7 = local.chain_6
+  chain_6 = local.chain_5
+  chain_5 = local.chain_4
+  chain_4 = local.chain_3
+  chain_3 = local.chain_2
+  chain_2 = local.chain_1
+  chain_1 = "terraform-aws-modules"
 }

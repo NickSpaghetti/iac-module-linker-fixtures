@@ -1,128 +1,5 @@
 # Parse benchmark, long. Three modules, the rest is bulk.
 
-# OpenTofu twin of the .tf file: each version is a variable default and each
-# registry namespace a local, so every source and version is evaluated.
-
-variable "vpc_version" {
-  default = "~> 5.0"
-}
-
-variable "security_group_version" {
-  default = "~> 5.1"
-}
-
-variable "s3_bucket_version" {
-  default = "~> 4.0"
-}
-
-locals {
-  terraform_aws_modules = local.chain_100
-}
-
-# 100 locals, each written before the one it refers to, the slowest order to resolve.
-locals {
-  chain_100 = local.chain_99
-  chain_99 = local.chain_98
-  chain_98 = local.chain_97
-  chain_97 = local.chain_96
-  chain_96 = local.chain_95
-  chain_95 = local.chain_94
-  chain_94 = local.chain_93
-  chain_93 = local.chain_92
-  chain_92 = local.chain_91
-  chain_91 = local.chain_90
-  chain_90 = local.chain_89
-  chain_89 = local.chain_88
-  chain_88 = local.chain_87
-  chain_87 = local.chain_86
-  chain_86 = local.chain_85
-  chain_85 = local.chain_84
-  chain_84 = local.chain_83
-  chain_83 = local.chain_82
-  chain_82 = local.chain_81
-  chain_81 = local.chain_80
-  chain_80 = local.chain_79
-  chain_79 = local.chain_78
-  chain_78 = local.chain_77
-  chain_77 = local.chain_76
-  chain_76 = local.chain_75
-  chain_75 = local.chain_74
-  chain_74 = local.chain_73
-  chain_73 = local.chain_72
-  chain_72 = local.chain_71
-  chain_71 = local.chain_70
-  chain_70 = local.chain_69
-  chain_69 = local.chain_68
-  chain_68 = local.chain_67
-  chain_67 = local.chain_66
-  chain_66 = local.chain_65
-  chain_65 = local.chain_64
-  chain_64 = local.chain_63
-  chain_63 = local.chain_62
-  chain_62 = local.chain_61
-  chain_61 = local.chain_60
-  chain_60 = local.chain_59
-  chain_59 = local.chain_58
-  chain_58 = local.chain_57
-  chain_57 = local.chain_56
-  chain_56 = local.chain_55
-  chain_55 = local.chain_54
-  chain_54 = local.chain_53
-  chain_53 = local.chain_52
-  chain_52 = local.chain_51
-  chain_51 = local.chain_50
-  chain_50 = local.chain_49
-  chain_49 = local.chain_48
-  chain_48 = local.chain_47
-  chain_47 = local.chain_46
-  chain_46 = local.chain_45
-  chain_45 = local.chain_44
-  chain_44 = local.chain_43
-  chain_43 = local.chain_42
-  chain_42 = local.chain_41
-  chain_41 = local.chain_40
-  chain_40 = local.chain_39
-  chain_39 = local.chain_38
-  chain_38 = local.chain_37
-  chain_37 = local.chain_36
-  chain_36 = local.chain_35
-  chain_35 = local.chain_34
-  chain_34 = local.chain_33
-  chain_33 = local.chain_32
-  chain_32 = local.chain_31
-  chain_31 = local.chain_30
-  chain_30 = local.chain_29
-  chain_29 = local.chain_28
-  chain_28 = local.chain_27
-  chain_27 = local.chain_26
-  chain_26 = local.chain_25
-  chain_25 = local.chain_24
-  chain_24 = local.chain_23
-  chain_23 = local.chain_22
-  chain_22 = local.chain_21
-  chain_21 = local.chain_20
-  chain_20 = local.chain_19
-  chain_19 = local.chain_18
-  chain_18 = local.chain_17
-  chain_17 = local.chain_16
-  chain_16 = local.chain_15
-  chain_15 = local.chain_14
-  chain_14 = local.chain_13
-  chain_13 = local.chain_12
-  chain_12 = local.chain_11
-  chain_11 = local.chain_10
-  chain_10 = local.chain_9
-  chain_9 = local.chain_8
-  chain_8 = local.chain_7
-  chain_7 = local.chain_6
-  chain_6 = local.chain_5
-  chain_5 = local.chain_4
-  chain_4 = local.chain_3
-  chain_3 = local.chain_2
-  chain_2 = local.chain_1
-  chain_1 = "terraform-aws-modules"
-}
-
 terraform {
   required_version = ">= 1.5.0"
 }
@@ -2112,4 +1989,128 @@ resource "aws_ssm_parameter" "service_122" {
   value       = "https://service-122.internal"
 
   tags = local.tags
+}
+
+# OpenTofu twin of the .tf file: each version is a variable default and each
+# registry namespace a local, so every source and version is evaluated. They
+# come last so every module sits on the same line as in the .tf file.
+
+variable "vpc_version" {
+  default = "~> 5.0"
+}
+
+variable "security_group_version" {
+  default = "~> 5.1"
+}
+
+variable "s3_bucket_version" {
+  default = "~> 4.0"
+}
+
+locals {
+  terraform_aws_modules = local.chain_100
+}
+
+# 100 locals, each written before the one it refers to, the slowest order to resolve.
+locals {
+  chain_100 = local.chain_99
+  chain_99 = local.chain_98
+  chain_98 = local.chain_97
+  chain_97 = local.chain_96
+  chain_96 = local.chain_95
+  chain_95 = local.chain_94
+  chain_94 = local.chain_93
+  chain_93 = local.chain_92
+  chain_92 = local.chain_91
+  chain_91 = local.chain_90
+  chain_90 = local.chain_89
+  chain_89 = local.chain_88
+  chain_88 = local.chain_87
+  chain_87 = local.chain_86
+  chain_86 = local.chain_85
+  chain_85 = local.chain_84
+  chain_84 = local.chain_83
+  chain_83 = local.chain_82
+  chain_82 = local.chain_81
+  chain_81 = local.chain_80
+  chain_80 = local.chain_79
+  chain_79 = local.chain_78
+  chain_78 = local.chain_77
+  chain_77 = local.chain_76
+  chain_76 = local.chain_75
+  chain_75 = local.chain_74
+  chain_74 = local.chain_73
+  chain_73 = local.chain_72
+  chain_72 = local.chain_71
+  chain_71 = local.chain_70
+  chain_70 = local.chain_69
+  chain_69 = local.chain_68
+  chain_68 = local.chain_67
+  chain_67 = local.chain_66
+  chain_66 = local.chain_65
+  chain_65 = local.chain_64
+  chain_64 = local.chain_63
+  chain_63 = local.chain_62
+  chain_62 = local.chain_61
+  chain_61 = local.chain_60
+  chain_60 = local.chain_59
+  chain_59 = local.chain_58
+  chain_58 = local.chain_57
+  chain_57 = local.chain_56
+  chain_56 = local.chain_55
+  chain_55 = local.chain_54
+  chain_54 = local.chain_53
+  chain_53 = local.chain_52
+  chain_52 = local.chain_51
+  chain_51 = local.chain_50
+  chain_50 = local.chain_49
+  chain_49 = local.chain_48
+  chain_48 = local.chain_47
+  chain_47 = local.chain_46
+  chain_46 = local.chain_45
+  chain_45 = local.chain_44
+  chain_44 = local.chain_43
+  chain_43 = local.chain_42
+  chain_42 = local.chain_41
+  chain_41 = local.chain_40
+  chain_40 = local.chain_39
+  chain_39 = local.chain_38
+  chain_38 = local.chain_37
+  chain_37 = local.chain_36
+  chain_36 = local.chain_35
+  chain_35 = local.chain_34
+  chain_34 = local.chain_33
+  chain_33 = local.chain_32
+  chain_32 = local.chain_31
+  chain_31 = local.chain_30
+  chain_30 = local.chain_29
+  chain_29 = local.chain_28
+  chain_28 = local.chain_27
+  chain_27 = local.chain_26
+  chain_26 = local.chain_25
+  chain_25 = local.chain_24
+  chain_24 = local.chain_23
+  chain_23 = local.chain_22
+  chain_22 = local.chain_21
+  chain_21 = local.chain_20
+  chain_20 = local.chain_19
+  chain_19 = local.chain_18
+  chain_18 = local.chain_17
+  chain_17 = local.chain_16
+  chain_16 = local.chain_15
+  chain_15 = local.chain_14
+  chain_14 = local.chain_13
+  chain_13 = local.chain_12
+  chain_12 = local.chain_11
+  chain_11 = local.chain_10
+  chain_10 = local.chain_9
+  chain_9 = local.chain_8
+  chain_8 = local.chain_7
+  chain_7 = local.chain_6
+  chain_6 = local.chain_5
+  chain_5 = local.chain_4
+  chain_4 = local.chain_3
+  chain_3 = local.chain_2
+  chain_2 = local.chain_1
+  chain_1 = "terraform-aws-modules"
 }

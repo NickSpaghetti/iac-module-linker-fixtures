@@ -1,52 +1,5 @@
 # Ten registry modules. Each one is a round trip.
 
-# OpenTofu twin of the .tf file: each version is a variable default and each
-# registry namespace a local, so every source and version is evaluated.
-
-variable "vpc_version" {
-  default = "~> 5.0"
-}
-
-variable "rds_version" {
-  default = ">= 6.0, < 7.0"
-}
-
-variable "security_group_version" {
-  default = "~> 5.1"
-}
-
-variable "eks_version" {
-  default = "~> 20.0"
-}
-
-variable "s3_bucket_version" {
-  default = "~> 4.0"
-}
-
-variable "alb_version" {
-  default = "~> 9.0"
-}
-
-variable "iam_version" {
-  default = "~> 5.0"
-}
-
-variable "lambda_version" {
-  default = "~> 7.0"
-}
-
-variable "ecs_version" {
-  default = "~> 5.0"
-}
-
-variable "acm_version" {
-  default = "~> 5.0"
-}
-
-locals {
-  terraform_aws_modules = "terraform-aws-modules"
-}
-
 terraform {
   required_version = ">= 1.5.0"
 }
@@ -99,4 +52,52 @@ module "ecs" {
 module "acm" {
   source  = "${local.terraform_aws_modules}/acm/aws"
   version = var.acm_version
+}
+
+# OpenTofu twin of the .tf file: each version is a variable default and each
+# registry namespace a local, so every source and version is evaluated. They
+# come last so every module sits on the same line as in the .tf file.
+
+variable "vpc_version" {
+  default = "~> 5.0"
+}
+
+variable "rds_version" {
+  default = ">= 6.0, < 7.0"
+}
+
+variable "security_group_version" {
+  default = "~> 5.1"
+}
+
+variable "eks_version" {
+  default = "~> 20.0"
+}
+
+variable "s3_bucket_version" {
+  default = "~> 4.0"
+}
+
+variable "alb_version" {
+  default = "~> 9.0"
+}
+
+variable "iam_version" {
+  default = "~> 5.0"
+}
+
+variable "lambda_version" {
+  default = "~> 7.0"
+}
+
+variable "ecs_version" {
+  default = "~> 5.0"
+}
+
+variable "acm_version" {
+  default = "~> 5.0"
+}
+
+locals {
+  terraform_aws_modules = "terraform-aws-modules"
 }

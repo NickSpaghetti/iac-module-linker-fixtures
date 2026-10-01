@@ -1,172 +1,5 @@
 # Forty registry modules, four times small.tf. Each one is a round trip.
 
-# OpenTofu twin of the .tf file: each version is a variable default and each
-# registry namespace a local, so every source and version is evaluated.
-
-variable "vpc_version" {
-  default = ">= 1.0"
-}
-
-variable "rds_version" {
-  default = "~> 4.1"
-}
-
-variable "security_group_version" {
-  default = ">= 2.0, < 100.0"
-}
-
-variable "eks_version" {
-  default = "~> 5.0"
-}
-
-variable "s3_bucket_version" {
-  default = ">= 1.0"
-}
-
-variable "alb_version" {
-  default = "~> 4.1"
-}
-
-variable "iam_version" {
-  default = ">= 2.0, < 100.0"
-}
-
-variable "lambda_version" {
-  default = "~> 5.0"
-}
-
-variable "ecs_version" {
-  default = ">= 1.0"
-}
-
-variable "acm_version" {
-  default = "~> 4.1"
-}
-
-variable "autoscaling_version" {
-  default = ">= 2.0, < 100.0"
-}
-
-variable "cloudfront_version" {
-  default = "~> 5.0"
-}
-
-variable "dynamodb_table_version" {
-  default = ">= 1.0"
-}
-
-variable "efs_version" {
-  default = "~> 4.1"
-}
-
-variable "key_pair_version" {
-  default = ">= 2.0, < 100.0"
-}
-
-variable "kms_version" {
-  default = "~> 5.0"
-}
-
-variable "rds_aurora_version" {
-  default = ">= 1.0"
-}
-
-variable "redshift_version" {
-  default = "~> 4.1"
-}
-
-variable "route53_version" {
-  default = ">= 2.0, < 100.0"
-}
-
-variable "sns_version" {
-  default = "~> 5.0"
-}
-
-variable "sqs_version" {
-  default = ">= 1.0"
-}
-
-variable "step_functions_version" {
-  default = "~> 4.1"
-}
-
-variable "transit_gateway_version" {
-  default = ">= 2.0, < 100.0"
-}
-
-variable "cloudwatch_version" {
-  default = "~> 5.0"
-}
-
-variable "apigateway_v2_version" {
-  default = ">= 1.0"
-}
-
-variable "appconfig_version" {
-  default = "~> 4.1"
-}
-
-variable "atlantis_version" {
-  default = ">= 2.0, < 100.0"
-}
-
-variable "customer_gateway_version" {
-  default = "~> 5.0"
-}
-
-variable "ebs_optimized_version" {
-  default = ">= 1.0"
-}
-
-variable "ec2_instance_version" {
-  default = "~> 4.1"
-}
-
-variable "eventbridge_version" {
-  default = ">= 2.0, < 100.0"
-}
-
-variable "global_accelerator_version" {
-  default = "~> 5.0"
-}
-
-variable "managed_service_prometheus_version" {
-  default = ">= 1.0"
-}
-
-variable "memory_db_version" {
-  default = "~> 4.1"
-}
-
-variable "notify_slack_version" {
-  default = ">= 2.0, < 100.0"
-}
-
-variable "opensearch_version" {
-  default = "~> 5.0"
-}
-
-variable "pricing_version" {
-  default = ">= 1.0"
-}
-
-variable "rds_proxy_version" {
-  default = "~> 4.1"
-}
-
-variable "secrets_manager_version" {
-  default = ">= 2.0, < 100.0"
-}
-
-variable "ssm_parameter_version" {
-  default = "~> 5.0"
-}
-
-locals {
-  terraform_aws_modules = "terraform-aws-modules"
-}
-
 terraform {
   required_version = ">= 1.5.0"
 }
@@ -369,4 +202,172 @@ module "secrets_manager" {
 module "ssm_parameter" {
   source  = "${local.terraform_aws_modules}/ssm-parameter/aws"
   version = var.ssm_parameter_version
+}
+
+# OpenTofu twin of the .tf file: each version is a variable default and each
+# registry namespace a local, so every source and version is evaluated. They
+# come last so every module sits on the same line as in the .tf file.
+
+variable "vpc_version" {
+  default = ">= 1.0"
+}
+
+variable "rds_version" {
+  default = "~> 4.1"
+}
+
+variable "security_group_version" {
+  default = ">= 2.0, < 100.0"
+}
+
+variable "eks_version" {
+  default = "~> 5.0"
+}
+
+variable "s3_bucket_version" {
+  default = ">= 1.0"
+}
+
+variable "alb_version" {
+  default = "~> 4.1"
+}
+
+variable "iam_version" {
+  default = ">= 2.0, < 100.0"
+}
+
+variable "lambda_version" {
+  default = "~> 5.0"
+}
+
+variable "ecs_version" {
+  default = ">= 1.0"
+}
+
+variable "acm_version" {
+  default = "~> 4.1"
+}
+
+variable "autoscaling_version" {
+  default = ">= 2.0, < 100.0"
+}
+
+variable "cloudfront_version" {
+  default = "~> 5.0"
+}
+
+variable "dynamodb_table_version" {
+  default = ">= 1.0"
+}
+
+variable "efs_version" {
+  default = "~> 4.1"
+}
+
+variable "key_pair_version" {
+  default = ">= 2.0, < 100.0"
+}
+
+variable "kms_version" {
+  default = "~> 5.0"
+}
+
+variable "rds_aurora_version" {
+  default = ">= 1.0"
+}
+
+variable "redshift_version" {
+  default = "~> 4.1"
+}
+
+variable "route53_version" {
+  default = ">= 2.0, < 100.0"
+}
+
+variable "sns_version" {
+  default = "~> 5.0"
+}
+
+variable "sqs_version" {
+  default = ">= 1.0"
+}
+
+variable "step_functions_version" {
+  default = "~> 4.1"
+}
+
+variable "transit_gateway_version" {
+  default = ">= 2.0, < 100.0"
+}
+
+variable "cloudwatch_version" {
+  default = "~> 5.0"
+}
+
+variable "apigateway_v2_version" {
+  default = ">= 1.0"
+}
+
+variable "appconfig_version" {
+  default = "~> 4.1"
+}
+
+variable "atlantis_version" {
+  default = ">= 2.0, < 100.0"
+}
+
+variable "customer_gateway_version" {
+  default = "~> 5.0"
+}
+
+variable "ebs_optimized_version" {
+  default = ">= 1.0"
+}
+
+variable "ec2_instance_version" {
+  default = "~> 4.1"
+}
+
+variable "eventbridge_version" {
+  default = ">= 2.0, < 100.0"
+}
+
+variable "global_accelerator_version" {
+  default = "~> 5.0"
+}
+
+variable "managed_service_prometheus_version" {
+  default = ">= 1.0"
+}
+
+variable "memory_db_version" {
+  default = "~> 4.1"
+}
+
+variable "notify_slack_version" {
+  default = ">= 2.0, < 100.0"
+}
+
+variable "opensearch_version" {
+  default = "~> 5.0"
+}
+
+variable "pricing_version" {
+  default = ">= 1.0"
+}
+
+variable "rds_proxy_version" {
+  default = "~> 4.1"
+}
+
+variable "secrets_manager_version" {
+  default = ">= 2.0, < 100.0"
+}
+
+variable "ssm_parameter_version" {
+  default = "~> 5.0"
+}
+
+locals {
+  terraform_aws_modules = "terraform-aws-modules"
 }

@@ -11,4 +11,7 @@ between the two is meaningful in a way the network bound axes are not.
 `small.tofu` and `large.tofu` are the same files written for OpenTofu: each
 version is a variable default and each registry namespace a local, reached
 through a chain of locals written in reverse, 25 deep in the small file and 100
-in the large. They measure what evaluating sources and versions adds to a parse.
+in the large. Those come at the end of each file, so every module sits on the
+same line as in the .tf file: GitHub only renders the lines near the viewport,
+and a module pushed further down would be timed for scrolling instead. They
+measure what evaluating sources and versions adds to a parse.

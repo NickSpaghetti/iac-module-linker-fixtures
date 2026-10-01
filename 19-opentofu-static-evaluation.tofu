@@ -9,6 +9,10 @@ variable "fixtures_ref" {
   default = "v1.0.0"
 }
 
+variable "env" {
+  default = "prod"
+}
+
 variable "not_set_here" {
   type = string
 }
@@ -35,6 +39,10 @@ module "templated_shorthand" {
 
 module "templated_git" {
   source = "git::https://${local.fixtures}.git//modules/vpc?ref=${var.fixtures_ref}"
+}
+
+module "conditional_template" {
+  source = "${var.env == "prod" ? local.fixtures : "example.com/unused"}//modules/vpc?ref=${var.fixtures_ref}"
 }
 
 module "registry_from_locals" {

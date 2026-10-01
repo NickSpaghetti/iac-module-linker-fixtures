@@ -1,6 +1,7 @@
 {
   "variable": {
     "vpc_version": { "default": "6.7.3" },
+    "env": { "default": "prod" },
     "not_set_here": { "type": "string" }
   },
   "locals": {
@@ -11,6 +12,9 @@
   "module": {
     "templated_shorthand": {
       "source": "${local.fixtures}//modules/vpc?ref=v1.0.0"
+    },
+    "conditional_template": {
+      "source": "${var.env == \"prod\" ? local.fixtures : \"example.com/unused\"}//modules/vpc?ref=v1.0.0"
     },
     "registry_from_locals": {
       "source": "${local.registry}/vpc/aws",

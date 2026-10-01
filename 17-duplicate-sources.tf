@@ -1,0 +1,11 @@
+# Two modules with one source, pinned to different versions. Each links to its own.
+
+module "consul_old" {
+  source  = "hashicorp/consul/aws"
+  version = "0.1.0"
+}
+
+module "consul_new" {
+  source  = "hashicorp/consul/aws"
+  version = "0.11.0"
+}

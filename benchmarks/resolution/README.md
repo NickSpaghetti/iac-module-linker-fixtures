@@ -10,3 +10,8 @@ exist would measure the error path instead.
 
 These are the slowest benchmarks in the suite by a distance, because the
 time is round trips rather than work.
+
+`small.tofu` and `large.tofu` declare the same modules for OpenTofu, with each
+version a variable default and each registry namespace a local. A module whose
+source did not evaluate would make no registry request, so the request count
+shows that every one resolved.

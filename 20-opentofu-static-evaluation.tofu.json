@@ -1,0 +1,31 @@
+{
+  "variable": {
+    "vpc_version": { "default": "6.7.3" },
+    "not_set_here": { "type": "string" }
+  },
+  "locals": {
+    "fixtures": "github.com/NickSpaghetti/iac-module-linker-fixtures",
+    "registry": "terraform-aws-modules",
+    "pinned": { "consul_old": "0.1.0", "consul_new": "0.11.0" }
+  },
+  "module": {
+    "templated_shorthand": {
+      "source": "${local.fixtures}//modules/vpc?ref=v1.0.0"
+    },
+    "registry_from_locals": {
+      "source": "${local.registry}/vpc/aws",
+      "version": "${var.vpc_version}"
+    },
+    "consul_old": {
+      "source": "hashicorp/consul/aws",
+      "version": "${local.pinned.consul_old}"
+    },
+    "consul_new": {
+      "source": "hashicorp/consul/aws",
+      "version": "${local.pinned.consul_new}"
+    },
+    "unresolved_variable": {
+      "source": "${var.not_set_here}//modules/vpc"
+    }
+  }
+}

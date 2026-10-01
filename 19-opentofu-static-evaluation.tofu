@@ -26,7 +26,7 @@ locals {
 locals {
   modules_dir  = "modules"
   registry     = "terraform-aws-modules"
-  vpc_registry = "${local.registry}/vpc/aws"
+  vpc_git      = "git::https://${local.fixtures}.git//${local.vpc_path}?ref=${var.fixtures_ref}"
   pinned = {
     consul_old = "0.1.0"
     consul_new = "0.11.0"
@@ -51,8 +51,8 @@ module "registry_from_locals" {
 }
 
 module "source_is_a_local" {
-  source  = local.vpc_registry
-  version = "6.7.3"
+  source  = local.vpc_git
+  # A git source takes no version.
 }
 
 module "consul_old" {
